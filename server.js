@@ -11,7 +11,6 @@ const io = socketIo(server, {
   }
 });
 
-// Almacenar las sesiones y sus gráficos en memoria (puede ser reemplazado por una base de datos)
 let sessions = {};
 
 io.on('connection', (socket) => {
@@ -19,7 +18,7 @@ io.on('connection', (socket) => {
 
   // Crear una nueva sesión y devolver el ID al cliente
   socket.on('create-session', (callback) => {
-    const sessionId = uuidv4();  // Generar un ID único para la sesión
+    const sessionId = uuidv4();  
     sessions[sessionId] = { cells: [] };  // Inicializar la sesión con celdas vacías
     callback(sessionId);  // Devolver el ID de la sesión al cliente
   });
